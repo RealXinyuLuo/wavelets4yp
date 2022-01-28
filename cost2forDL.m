@@ -1,6 +1,13 @@
 function cost_vector = cost2forDL(diff,LoD,LoR,T)
-cost_vector = zeros(4,1);
-diff = diff';
+% cost_vector function for deep learninf 
+% INPUTS:
+%   diif:
+%   LoD: Low-pass Decompoaition filter 
+%   LoR: Low-pass Reconstruction filter
+%   T: Target image 
+
+    cost_vector = zeros(4,1);
+    diff = diff';
     for k = 1 : length(diff) -1
         if rem(k,2) == 1
             cost_vector(1) = cost_vector(1) + T(k) * LoR(1) * diff(k); % Need to swap 2 and 1 because indices from Df and LoD seems to swap
